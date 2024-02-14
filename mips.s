@@ -133,3 +133,10 @@ is_letter:
 next_symbol:
     # move to next character by incrementing $s0 by 1
     addi $s0, $s0, 1
+j ps_while_loop
+    # end of loop
+ps_end_while:
+    # if sum > 0 return sum
+    # else return '-'
+
+    jr $ra
