@@ -28,3 +28,10 @@ main:
 main_while_loop:
     lb $t3, 0($a0)
     beq $t3, $zero, main_while_end
+
+    # save the pointer to the start of the string on the stack
+    # move stack pointer to make room on stack for string address
+    sub $sp, $sp, 4
+    # store the address on the stack
+    sw $a0, 0($sp)
+
