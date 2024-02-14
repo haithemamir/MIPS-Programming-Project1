@@ -72,3 +72,8 @@ add_null_term:
     addi $sp, $sp, 4
     addi $a0, $a0, 1
     j main_while_loop
+
+    main_while_end:
+    # quit the program
+    li $v0, 10
+    syscall
