@@ -95,3 +95,9 @@ ps_while_loop:
     beq $s1, $zero, ps_end_while
     # if character is uppercase, convert it to lowercase, use $t0 and $t1 for this
     li $t1, 'A'
+    bge $s1, $t1, upper_test_2
+    j not_upper
+upper_test_2:
+    li $t1, 'Z'
+    ble $s1, $t1, is_upper
+    j not_upper
