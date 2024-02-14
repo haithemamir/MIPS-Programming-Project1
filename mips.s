@@ -23,3 +23,8 @@ main:
     la $a0, str
     li $a1, 1001
     syscall
+
+ # loop until the null terminator
+main_while_loop:
+    lb $t3, 0($a0)
+    beq $t3, $zero, main_while_end
