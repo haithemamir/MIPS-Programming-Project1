@@ -61,3 +61,9 @@ add_null_term:
     add $a0, $v0, $zero
     li $v0, 1
     syscall
+    # print a separator character
+    li $v0, 11
+    li $a0, '/'
+    syscall
+    # restore $a0
+    add $a0, $s7, $zero
