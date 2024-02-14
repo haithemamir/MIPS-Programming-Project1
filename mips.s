@@ -108,3 +108,8 @@ not_upper:
     li $t1, '0'
     bge $s1, $t1, char_2
     j next_symbol
+char_2:
+    li $t1, '9'
+    ble $s1, $t1, is_num
+    j not_num
+    #    convert character to a num and add to sum
