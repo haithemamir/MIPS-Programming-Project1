@@ -117,3 +117,8 @@ is_num:
     addi $s1, $s1, -48
     add $v0, $v0, $s1
     j next_symbol
+not_num:    
+    # else if character >= 'a' and <= 'p'
+    li $t1, 'a'
+    bge $s1, $t1, letter_2
+    j next_symbol
