@@ -77,3 +77,11 @@ add_null_term:
     # quit the program
     li $v0, 10
     syscall
+
+# takes string address via stack
+# returns calculated value in $v0
+# 'A' = 65/0x41
+# 'Z' = 90/0x5A
+process_substring:
+    # load the pointer to the address on the stack into $s0
+    lw $s0, 0($sp)
