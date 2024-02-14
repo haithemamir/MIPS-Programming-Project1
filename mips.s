@@ -129,4 +129,7 @@ letter_2:
     #    convert character to a num and add to sum
 is_letter:
     addi $s1, $s1, -87
-    add $v0, $v0, $s1    
+    add $v0, $v0, $s1   
+next_symbol:
+    # move to next character by incrementing $s0 by 1
+    addi $s0, $s0, 1
