@@ -35,3 +35,18 @@ main_while_loop:
     # store the address on the stack
     sw $a0, 0($sp)
 
+    # increment string pointer by 1 and search for a / and replace with a null terminator
+slash_loop:    
+    addi $a0, $a0, 1
+    li $t3, '/'
+    lb $t4, 0($a0)
+    beq $t3, $t4, add_null_term
+    li $t3, 10 #newline character
+    lb $t4, 0($a0)
+    beq $t3 $t4, add_null_term
+    j slash_loop
+
+
+add_null_term:
+    # once we reach here, we are at the '/' or a newline so replace it with a null terminator
+    sb $zero, 0($a0)
