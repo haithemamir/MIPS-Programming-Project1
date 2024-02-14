@@ -91,3 +91,5 @@ process_substring:
 ps_while_loop:
     # load the byte at the pointer into $s1
     lb $s1, 0($s0)
+    # if character is null then break out of loop
+    beq $s1, $zero, ps_end_while
