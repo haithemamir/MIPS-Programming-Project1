@@ -10,3 +10,16 @@
 # phase2: read a string from the user and break it up based on the /
 
 # phase3: pass each broken up string into the subroutine from phase 1
+
+.data
+    str: .space 1002
+
+.text 
+.globl main
+
+main:
+    # get user input string
+    li $v0, 8 # read string
+    la $a0, str
+    li $a1, 1001
+    syscall
