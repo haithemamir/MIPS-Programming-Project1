@@ -54,3 +54,10 @@ add_null_term:
     # at this point the pointer to the start of the string is on the top of the stack
     # and we have changed the / to a null terminator
     jal process_substring
+
+    # print the return value of process_substring which is in $v0
+    # temporarily save of $a0 so we can use it for printing
+    add $s7, $a0, $zero
+    add $a0, $v0, $zero
+    li $v0, 1
+    syscall
