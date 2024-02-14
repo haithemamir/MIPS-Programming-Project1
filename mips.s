@@ -122,3 +122,11 @@ not_num:
     li $t1, 'a'
     bge $s1, $t1, letter_2
     j next_symbol
+letter_2:
+    li $t1, 'p'
+    ble $s1, $t1, is_letter
+    j next_symbol
+    #    convert character to a num and add to sum
+is_letter:
+    addi $s1, $s1, -87
+    add $v0, $v0, $s1    
