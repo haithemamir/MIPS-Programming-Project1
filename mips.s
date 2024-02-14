@@ -101,3 +101,10 @@ upper_test_2:
     li $t1, 'Z'
     ble $s1, $t1, is_upper
     j not_upper
+is_upper:
+    addi $s1, $s1, 32 
+not_upper:
+    # if character >= '0' and <= '9'
+    li $t1, '0'
+    bge $s1, $t1, char_2
+    j next_symbol
