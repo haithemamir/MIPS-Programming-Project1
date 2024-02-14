@@ -113,3 +113,7 @@ char_2:
     ble $s1, $t1, is_num
     j not_num
     #    convert character to a num and add to sum
+is_num:
+    addi $s1, $s1, -48
+    add $v0, $v0, $s1
+    j next_symbol
