@@ -67,3 +67,8 @@ add_null_term:
     syscall
     # restore $a0
     add $a0, $s7, $zero
+
+    # after the call to process substring, restore the stack, advance the string pointer by 1, and repeat
+    addi $sp, $sp, 4
+    addi $a0, $a0, 1
+    j main_while_loop
