@@ -93,3 +93,5 @@ ps_while_loop:
     lb $s1, 0($s0)
     # if character is null then break out of loop
     beq $s1, $zero, ps_end_while
+    # if character is uppercase, convert it to lowercase, use $t0 and $t1 for this
+    li $t1, 'A'
