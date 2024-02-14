@@ -50,3 +50,7 @@ slash_loop:
 add_null_term:
     # once we reach here, we are at the '/' or a newline so replace it with a null terminator
     sb $zero, 0($a0)
+
+    # at this point the pointer to the start of the string is on the top of the stack
+    # and we have changed the / to a null terminator
+    jal process_substring
