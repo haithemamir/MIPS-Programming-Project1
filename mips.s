@@ -85,3 +85,9 @@ add_null_term:
 process_substring:
     # load the pointer to the address on the stack into $s0
     lw $s0, 0($sp)
+     # init $v0 to 0
+    add $v0, $zero, $zero 
+# start of loop
+ps_while_loop:
+    # load the byte at the pointer into $s1
+    lb $s1, 0($s0)
