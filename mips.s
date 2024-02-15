@@ -67,15 +67,17 @@ add_null_term:
     syscall
     # print a separator character if the next character is not
     # a null terminator (meaning we are not at the end of the string)
+    # restore $a0
+    add $a0, $s7, $zero
     lb $t4, 0($a0)
     li $t3, 0 # null terminator
-    beq $t3 $t4, add_null_term
-    j slash_loop
+    beq $t3 $t4, skip_print_slash
     li $v0, 11
     li $a0, '/'
     syscall
     # restore $a0
     add $a0, $s7, $zero
+skip_print_lash: 
 
     
     j main_while_loop
