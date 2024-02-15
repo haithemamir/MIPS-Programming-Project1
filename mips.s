@@ -77,7 +77,7 @@ add_null_term:
     syscall
     # restore $a0
     add $a0, $s7, $zero
-skip_print_lash: 
+skip_print_slash: 
 
     
     j main_while_loop
