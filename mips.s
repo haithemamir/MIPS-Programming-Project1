@@ -13,11 +13,17 @@
 
 .data
     str: .space 1002
+    prompt: .asciiz "Input: "
+    output: .asciiz "\n Output: "
 
 .text 
 .globl main
 
 main:
+    # Display Prompt
+    li $v0, 4
+    la $a0, prompt
+    syscall
     # get user input string
     li $v0, 8 # read string
     la $a0, str
