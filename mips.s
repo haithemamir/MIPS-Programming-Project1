@@ -61,10 +61,19 @@ add_null_term:
 
     # print the return value of process_substring which is in $v0
     # temporarily save of $a0 so we can use it for printing
+    # if $v0 contains '0' (45 decimal) print a character instead of an int
     add $s7, $a0, $zero
+    li $t3, '-'
+    beq $t3, $v0, print_dash
     add $a0, $v0, $zero
     li $v0, 1
     syscall
+    j print_slash_check
+print_dash:
+    li $v0, 11
+    li $a0, '-'
+    syscall
+ print_slash_check:   
     # print a separator character if the next character is not
     # a null terminator (meaning we are not at the end of the string)
     # restore $a0
