@@ -153,7 +153,7 @@ ps_end_while:
     # else return '-'
     beg $t8, $zero, return_dash
     j return_normal
-
-
+return_dash:
+    li $v0, '-'
 return_normal:
     jr $ra
