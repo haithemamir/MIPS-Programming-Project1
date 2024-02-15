@@ -25,7 +25,7 @@ main:
     syscall
 
  # loop until the null terminator
-main_while_loop:
+process_whole_string:
     lb $t3, 0($a0)
     beq $t3, $zero, main_while_end
 
@@ -89,7 +89,7 @@ print_dash:
 skip_print_slash: 
 
     
-    j main_while_loop
+    j process_whole_string
 
     main_while_end:
     # quit the program
