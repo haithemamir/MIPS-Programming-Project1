@@ -96,6 +96,8 @@ process_substring:
     lw $s0, 0($sp)
      # init $v0 to 0
     add $v0, $zero, $zero 
+    # use t8 to indicate if there is any valid process_substring
+    add $t8, $zero $zero
 # start of loop
 ps_while_loop:
     # load the byte at the pointer into $s1
@@ -125,6 +127,7 @@ char_2:
 is_num:
     addi $s1, $s1, -48
     add $v0, $v0, $s1
+    addi $t8, $t8, 1
     j next_symbol
 not_num:    
     # else if character >= 'a' and <= 'p'
@@ -139,13 +142,18 @@ letter_2:
 is_letter:
     addi $s1, $s1, -87
     add $v0, $v0, $s1   
+    addi $t8, $t8, 1
 next_symbol:
     # move to next character by incrementing $s0 by 1
     addi $s0, $s0, 1
 j ps_while_loop
     # end of loop
 ps_end_while:
-    # if sum > 0 return sum
+    # if t8 > 0, at least one valid character, return v0
     # else return '-'
+    beg $t8, $zero, return_dash
+    j return_normal
 
+
+return_normal:
     jr $ra
