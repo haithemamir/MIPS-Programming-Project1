@@ -55,22 +55,29 @@ add_null_term:
     # and we have changed the / to a null terminator
     jal process_substring
 
+    # after the call to process substring, restore the stack, advance the string pointer by 1, and repeat
+    addi $sp, $sp, 4
+    addi $a0, $a0, 1
+
     # print the return value of process_substring which is in $v0
     # temporarily save of $a0 so we can use it for printing
     add $s7, $a0, $zero
     add $a0, $v0, $zero
     li $v0, 1
     syscall
-    # print a separator character
+    # print a separator character if the next character is not
+    # a null terminator (meaning we are not at the end of the string)
+    lb $t4, 0($a0)
+    li $t3, 0 # null terminator
+    beq $t3 $t4, add_null_term
+    j slash_loop
     li $v0, 11
     li $a0, '/'
     syscall
     # restore $a0
     add $a0, $s7, $zero
 
-    # after the call to process substring, restore the stack, advance the string pointer by 1, and repeat
-    addi $sp, $sp, 4
-    addi $a0, $a0, 1
+    
     j main_while_loop
 
     main_while_end:
