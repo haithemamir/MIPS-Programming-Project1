@@ -151,7 +151,7 @@ j ps_while_loop
 ps_end_while:
     # if t8 > 0, at least one valid character, return v0
     # else return '-'
-    beg $t8, $zero, return_dash
+    beq $t8, $zero, return_dash
     j return_normal
 return_dash:
     li $v0, '-'
